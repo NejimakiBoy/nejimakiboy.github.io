@@ -1,1 +1,1 @@
-[here](nejimakiboy.githu.io)
+[here](nejimakiboy.github.io)
