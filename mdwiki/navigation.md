@@ -3,7 +3,7 @@
   -- Do NOT remove the leading `#` character.
   -->
 
-# 忘備録
+# 備忘録
 
 
 <!--
