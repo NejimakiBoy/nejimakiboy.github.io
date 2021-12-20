@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="icon" href="images/favicon.ico" />
+        <meta charset="utf-8">
+        <meta name="author" content="Nejimaki Boy">
+        <meta name="description" content="このWebページはNejimaki BoyがWebについて勉強するためのページです。">
+        <title>NejimakiBoyのHTML覚書</title>
+    </head>
+
+    <body>
+        <header>
+            <h1>NejimakiBoyのHTML覚書</h1>
+            <p>Nejimaki BoyがWebについて勉強するためのページです。</p>
+        </header>
+
+        <nav>
+            <h2>メニュー</h2>
+            <ul>
+                <li><a href="learn_web.html">Home</a></li>
+                <li><a href="learn_html.html">HTML</a></li>
+                <li><a href="learn_css.html">CSS</a></li>
+                <li><a href="learn_javascript.html">JavaScript</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <article>
+                <h2>参考</h2>
+                <p><a href="https://developer.mozilla.org/ja/docs/Web/HTML">HTML: HyperText Markup Language | MDN</a></p>
+                <p><a href="https://www.tohoho-web.com/html/index.htm">HTMLリファレンス | とほほのＷＷＷ入門</a></p>
+            </article>
+
+        <!-- コメント -->
+
+            <article>
+                <h2>見出し</h2>
+
+                <h1>見出し1（ページタイトル）</h1>
+                <h2>見出し2</h2>
+                <h3>見出し3</h3>
+                <h4>見出し4</h4>
+                <h5>見出し5</h5>
+                <h6>見出し6</h6>
+            </article>
+
+        <article>
+        <h2>テキストと修飾</h2>
+
+        <p>パラグラフ</p>
+
+        <p>パラグラフ内で<br>改行</p>
+
+        <p>主題の変更を示す罫線:</p>
+        <hr>
+
+        <p>特殊文字（HTML エンティティ, 文字実体参照）<br>&lt; &gt; &quot; &apos; &amp;</p>
+
+        <ul>
+            <li>順序なしリスト</li>
+            <li>順序なしリスト</li>
+            <li>順序なしリスト</li>
+        </ul>
+
+        <ol>
+            <li>順序付きリスト</li>
+            <li>順序付きリスト</li>
+            <li>順序付きリスト</li>
+        </ol>
+
+        <dl>
+            <dt>説明リスト</dt>
+            <dd>このリストの目的は、項目とそれに関連する説明を一緒にマークアップすることで、用語の定義や、質問と回答などに使います。</dd>
+            <dt>説明リスト2</dt>
+            <dd>このリストの目的は、項目とそれに関連する説明を一緒にマークアップすることで、用語の定義や、質問と回答などに使います。</dd>
+        </dl>
+
+        <p><em>The Emphasis element</em></p>
+
+        <p><strong>強い重要性</strong></p>
+
+        <p><i>Italic</i></p>
+
+        <p><b>太字</b></p>
+
+        <p><u>下線</u></p>
+
+        <p>上付き 1<sup>st</sup></p>
+
+        <p>下付き H<sub>2</sub>O</p>
+        </article>
+
+        <article>
+            <h2>マルチメディア</h2>
+
+            <p>画像</p>
+            <img src="images\nejimaki_boy.png" alt="画像の説明">
+        </article>
+
+        <article>
+        <h2  id="hyperlink">ハイパーリンク</h2>
+
+        <p><a href="https://developer.mozilla.org/ja/">ハイパーリンク（MDN web Docs）</a></p>
+
+        <p>画像でリンク</p>
+        <a href="https://developer.mozilla.org/ja/"> <img src="images/nejimaki_boy.png" alt="画像でリンク"></a>
+        
+        <p><a href="index.html#hyperlink">ドキュメントフラグメントにリンク</a></p>
+        
+        <p><a href="images/nejimaki_boy.png" download="nejimaki_boy.png">ダウンロードへのリンク（nejimaki_boy.png）</a></p>
+        
+        <p><a href="mailto:nowhere@mozilla.org">メールアドレスのリンク</a></p>
+        </article>
+
+        <article>
+        <h2>その他</h2>
+
+        <p>引用元 <a href="引用元"><cite>References</cite></a>:</p>
+        <blockquote cite="引用元">
+            <p>ブロッククオート</p>
+        </blockquote>
+
+        <p>略語 <abbr title="Hypertext Markup Language">HTML</abbr></p>
+
+        <address><p>詳細な連絡先  Twitter: @nejimaki_boy</p></address> 
+
+        <pre><p>空白  の    保持</p></pre>
+        
+        <P>コンピューターコード:</P>
+        <pre><code>
+int integer = 0;
+
+void function()
+{
+    Console.Write("HelloWorld");
+}
+</code></pre>
+
+        <p>変数名 <var>integer</var></p>
+
+        <p>キーボード入力 <kbd>Ctrl</kbd>+<kbd>S</kbd></p>
+
+        <p>プログラムの出力 <samp>HelloWorld</samp></p>
+
+        <p>日付と時刻</p>
+        <p>
+            <!-- Standard simple date -->
+            <time datetime="2016-01-20">20 January 2016</time><br>
+            <!-- Just year and month -->
+            <time datetime="2016-01">January 2016</time><br>
+            <!-- Just month and day -->
+            <time datetime="01-20">20 January</time><br>
+            <!-- Just time, hours and minutes -->
+            <time datetime="19:30">19:30</time><br>
+            <!-- You can do seconds and milliseconds too! -->
+            <time datetime="19:30:01.856">19:30:01.856</time><br>
+            <!-- Date and time -->
+            <time datetime="2016-01-20T19:30">7.30pm, 20 January 2016</time><br>
+            <!-- Date and time with timezone offset-->
+            <time datetime="2016-01-20T19:30+01:00">7.30pm, 20 January 2016 is 8.30pm in France</time><br>
+            <!-- Calling out a specific week number-->
+            <time datetime="2016-W04">The fourth week of 2016</time><br>
+        </p>
+        </article>
+        </main>
+
+        <footer>
+            <p>フッター<br>Author: Nejimaki Boy</p>
+        </footer>
+    </body>
+</html> 
