@@ -1,0 +1,188 @@
+li.disc {
+    list-style: disc;
+}
+li.circle {
+    list-style: circle;
+}
+li.square {
+    list-style: square;
+}
+li.string {
+    list-style-type: "\1F61B"; /* thumbs up sign */
+}
+li.inside {
+    list-style: inside;
+}
+li.none {
+    list-style: none;
+}
+li.url {
+    list-style: url("../images/nejimaki_boy.png");
+}
+
+.bbox {
+    box-sizing: border-box;
+    width: 100px;
+    border: 4px red solid;
+
+}
+
+.cbox{
+    box-sizing: content-box;
+    width: 100px;
+    border: 4px blue solid;
+}
+
+/*
+selector {
+    propaty: value;
+    propaty: function(argument);
+}
+*/
+
+span {
+    color: red;
+}
+
+li.special,
+span.special {
+  color: orange;
+  font-weight: bold;
+}
+
+li em {
+    color: rebeccapurple;
+}
+
+
+a:link {
+    color: blue;
+}
+  
+a:visited {
+    color: green;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+  /* <article> 要素の内側にある <p> 要素の <span> 要素に焦点を当てるとき */
+article p span {
+    color: red;
+}
+
+
+/* <h2> 要素の直後に来る <ul> 要素の、そのまた直後に来る <p> 要素に焦点を当てるとき */
+h2 + ul + p {
+    color:blue;
+}
+
+body h1 + p .special {
+    color: yellow;
+    background-color: black;
+    padding: 5px;
+}
+
+article h2+p::first-letter {
+    font-size: 200%;
+    font-weight: bold;
+}
+
+/* spacing */
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border: 3px solid purple;
+  }
+  
+  thead th:nth-child(1) {
+    width: 30%;
+  }
+  
+  thead th:nth-child(2) {
+    width: 20%;
+  }
+  
+  thead th:nth-child(3) {
+    width: 15%;
+  }
+  
+  thead th:nth-child(4) {
+    width: 35%;
+  }
+  
+  th, td {
+    padding: 20px;
+  }
+
+  /* typography */
+
+html {
+    font-family: 'helvetica neue', helvetica, arial, sans-serif;
+  }
+  
+  thead th, tfoot th {
+    font-family: 'Rock Salt', cursive;
+  }
+  
+  th {
+    letter-spacing: 2px;
+  }
+  
+  td {
+    letter-spacing: 1px;
+  }
+  
+  tbody td {
+    text-align: center;
+  }
+  
+  tfoot th {
+    text-align: right;
+  }
+
+  /* グラフィックと色 */
+
+thead, tfoot {
+    background: url(../images/nejimaki_boy.png);
+    color: white;
+    text-shadow: 1px 1px 1px black;
+  }
+  
+  thead th, tfoot th, tfoot td {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+    border: 3px solid black;
+  }
+
+  /* 縞模様 */
+
+tbody tr:nth-child(odd) {
+    background-color: gray;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: lightgray;
+  }
+  
+  tbody tr {
+    background-image: url(noise.png);
+  }
+  
+  table {
+    background-color: #3babff;
+  }
+  
+  /* caption */
+
+caption {
+    font-family: 'Rock Salt', cursive;
+    padding: 20px;
+    font-style: italic;
+    caption-side: bottom;
+    color: #666;
+    text-align: right;
+    letter-spacing: 1px;
+  }

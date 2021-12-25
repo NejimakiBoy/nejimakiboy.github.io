@@ -1,16 +1,115 @@
 <!DOCTYPE html>
 <html>
     <head>
-    	<meta charset="utf-8"/>
-    	<title>CSS</title>
-		<base target="_blank">
-	</head>
+        <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
 
-	<body>
-		<header>
-			<h1>CSS</h1>
-			<p>Nejimaki BoyがWebについて勉強するためのページです。</p>
-		</header>
+        <meta charset="utf-8"/>
+        <title>CSS</title>
+        <base target="_blank">
+        <link rel="stylesheet" href="styles/learn_css.css">
+    </head>
+
+    <body>
+        <header>
+            <h1>CSS</h1>
+            <p>Nejimaki BoyがWebについて勉強するためのページです。</p>
+        </header>
+
+        <p>これは第一段落の文です。この文には <span>span 要素</span>
+        と<a href="http://example.com">リンク</a>が含まれます。</p>
+
+        <p>これは第二段落の文です。この文には <em>em 要素</em>が含まれます。</p>
+
+        <ul>
+            <li>一つ目の項目</li>
+            <li class="special">二つ目の項目</li>
+            <li><em>三つ目</em>の項目</li>
+        </ul>
+
+        <article>
+            <p>
+                ABCDIEG<span>HIJKLMN</span>OPQRSUVWXYZ
+            </p>
+        </article>
+
+        <h2>h2</h2>
+        <ul>
+            <li>A</li>
+            <li>B</li>
+            <li>C</li>
+        </ul>
+        <p>123456</p>
+
+        <article>
+            <h2>h2</h2>
+                <p>blar blar blar</p>
+        </article>
+
+        <h2>list-style</h2>
+        <p>詳細: <a href="https://developer.mozilla.org/ja/docs/Web/CSS/list-style">list-style - CSS: カスケーディングスタイルシート | MDN</a></p>
+        <ul>
+            <li class="disc">disc</li>
+            <li class="circle">circle</li>
+            <li class ="square">square</li>
+            <li class="string">string</li>
+            <li class ="inside">inside</li>
+            <li class ="outside">outside</li>
+            <li class ="none">none</li>
+            <li class ="url">url</li>
+        </ul>
+
+        <h2> box-sizing</h2>
+        <p>width 100px, border 4px</p> 
+        <div class="bbox">
+            border-box 123ABC
+        </div>
+
+        <div class="cbox">
+            content-box 123ABC
+        </div>
+
+        <h2>table</h2>
+        <p>
+          詳細: 
+          <a href="https://developer.mozilla.org/ja/docs/Learn/CSS/Building_blocks/Styling_tables">表のスタイリング - ウェブ開発を学ぶ | MDN</a>
+        </p>
+        <table>
+            <caption>A summary of the UK's most famous punk bands</caption>
+            <thead>
+              <tr>
+                <th scope="col">Albam</th>
+                <th scope="col">Released</th>
+                <th scope="col">Length</th>
+                <th scope="col">Favorite song</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Selected Ambient Works 85–92</th>
+                <td>1992</td>
+                <td>74:40</td>
+                <td>Xtal</td>
+              </tr>
+              <tr>
+                <th scope="row">On</th>
+                <td>1993</td>
+                <td>23:54</td>
+                <td>On</td>
+              </tr>
+              <tr>
+                <th scope="row">Drukqs</th>
+                <td>2001</td>
+                <td>100:37</td>
+                <td>Nannou2</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th scope="row" colspan="2">Total length</th>
+                <td colspan="2">179:11</td>
+              </tr>
+            </tfoot>
+          </table>
 
         <footer>
             <address>Twitter: @nejimaki_boy</address>
