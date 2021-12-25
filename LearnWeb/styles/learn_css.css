@@ -1,3 +1,22 @@
+/* CSSの整理 */
+/* https://developer.mozilla.org/ja/docs/Learn/CSS/Building_blocks/Organizing */
+
+/* || 一般的なスタイル */
+html {
+font-family: 'helvetica neue', helvetica, arial, sans-serif;
+}
+
+body { }
+
+h1, h2, h3, h4 { }
+
+ul { }
+
+blockquote { }
+
+
+/* list-style */
+
 li.disc {
     list-style: disc;
 }
@@ -20,6 +39,9 @@ li.url {
     list-style: url("../images/nejimaki_boy.png");
 }
 
+
+/* box-sizing */
+
 .bbox {
     box-sizing: border-box;
     width: 100px;
@@ -33,12 +55,108 @@ li.url {
     border: 4px blue solid;
 }
 
+
+/* table */
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 3px solid purple;
+}
+
+thead th:nth-child(1) {
+  width: 30%;
+}
+
+thead th:nth-child(2) {
+  width: 20%;
+}
+
+thead th:nth-child(3) {
+  width: 15%;
+}
+
+thead th:nth-child(4) {
+  width: 35%;
+}
+
+th, td {
+  padding: 20px;
+}
+
+/* spacing */
+
+thead th, tfoot th {
+  font-family: 'Rock Salt', cursive;
+}
+
+th {
+  letter-spacing: 2px;
+}
+
+td {
+  letter-spacing: 1px;
+}
+
+tbody td {
+  text-align: center;
+}
+
+tfoot th {
+  text-align: right;
+}
+
+/* グラフィックと色 */
+
+thead, tfoot {
+  background: url(../images/nejimaki_boy.png);
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+
+thead th, tfoot th, tfoot td {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+  border: 3px solid black;
+}
+
+/* 縞模様 */
+
+tbody tr:nth-child(odd) {
+  background-color: gray;
+}
+
+tbody tr:nth-child(even) {
+  background-color: lightgray;
+}
+
+tbody tr {
+  background-image: url(noise.png);
+}
+
+table {
+  background-color: #3babff;
+}
+
+/* caption */
+
+caption {
+  font-family: 'Rock Salt', cursive;
+  padding: 20px;
+  font-style: italic;
+  caption-side: bottom;
+  color: #666;
+  text-align: right;
+  letter-spacing: 1px;
+}
+
 /*
 selector {
     propaty: value;
     propaty: function(argument);
 }
 */
+
 
 span {
     color: red;
@@ -89,100 +207,3 @@ article h2+p::first-letter {
     font-weight: bold;
 }
 
-/* spacing */
-
-table {
-    table-layout: fixed;
-    width: 100%;
-    border-collapse: collapse;
-    border: 3px solid purple;
-  }
-  
-  thead th:nth-child(1) {
-    width: 30%;
-  }
-  
-  thead th:nth-child(2) {
-    width: 20%;
-  }
-  
-  thead th:nth-child(3) {
-    width: 15%;
-  }
-  
-  thead th:nth-child(4) {
-    width: 35%;
-  }
-  
-  th, td {
-    padding: 20px;
-  }
-
-  /* typography */
-
-html {
-    font-family: 'helvetica neue', helvetica, arial, sans-serif;
-  }
-  
-  thead th, tfoot th {
-    font-family: 'Rock Salt', cursive;
-  }
-  
-  th {
-    letter-spacing: 2px;
-  }
-  
-  td {
-    letter-spacing: 1px;
-  }
-  
-  tbody td {
-    text-align: center;
-  }
-  
-  tfoot th {
-    text-align: right;
-  }
-
-  /* グラフィックと色 */
-
-thead, tfoot {
-    background: url(../images/nejimaki_boy.png);
-    color: white;
-    text-shadow: 1px 1px 1px black;
-  }
-  
-  thead th, tfoot th, tfoot td {
-    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
-    border: 3px solid black;
-  }
-
-  /* 縞模様 */
-
-tbody tr:nth-child(odd) {
-    background-color: gray;
-  }
-  
-  tbody tr:nth-child(even) {
-    background-color: lightgray;
-  }
-  
-  tbody tr {
-    background-image: url(noise.png);
-  }
-  
-  table {
-    background-color: #3babff;
-  }
-  
-  /* caption */
-
-caption {
-    font-family: 'Rock Salt', cursive;
-    padding: 20px;
-    font-style: italic;
-    caption-side: bottom;
-    color: #666;
-    text-align: right;
-    letter-spacing: 1px;
-  }
