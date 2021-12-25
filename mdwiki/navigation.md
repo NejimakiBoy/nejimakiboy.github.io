@@ -18,7 +18,6 @@
   -- Navigation
   -- (Read: http://dynalon.github.io/mdwiki/#!quickstart.md#Adding_a_navigation)
   -->
-
 [home](index.md)
 
 <!--
