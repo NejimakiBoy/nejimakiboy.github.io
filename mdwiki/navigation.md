@@ -3,7 +3,7 @@
   -- Do NOT remove the leading `#` character.
   -->
 
-# 備忘録
+# Nejimaki Boyの備忘録
 
 
 <!--
@@ -18,7 +18,10 @@
   -- Navigation
   -- (Read: http://dynalon.github.io/mdwiki/#!quickstart.md#Adding_a_navigation)
   -->
-[home](index.md)
+
+[nejimakiboy.github.io](../index.html)
+
+<!-- [忘備録ホーム](index.md) -->
 
 <!--
 [Menu Item 1]()
