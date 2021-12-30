@@ -1,0 +1,35 @@
+/* nav */
+nav ul {
+    padding: 0;
+    width: 90%;
+    margin: auto;
+    border: 1px black solid;
+}
+
+nav li {
+    display: inline;
+}
+
+nav a {
+    box-sizing: border-box;
+    border: 1px black solid;
+    text-decoration: none;
+    display: inline-block;
+    width: 20%;
+    text-align: center;
+    line-height: 4;
+    color: black;
+}
+
+nav a:link, nav a:visited, nav a:focus {
+    background: lightgray;
+}
+  
+nav a:hover {
+    background: gray;
+}
+  
+nav a:active {
+    background: black;
+    color: white;
+}

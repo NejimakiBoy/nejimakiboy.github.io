@@ -6,15 +6,6 @@ html {
 font-family: 'helvetica neue', helvetica, arial, sans-serif;
 }
 
-body { }
-
-h1, h2, h3, h4 { }
-
-ul { }
-
-blockquote { }
-
-
 /* list-style */
 
 li.disc {
@@ -48,13 +39,11 @@ li.url {
     border: 4px red solid;
 
 }
-
 .cbox{
     box-sizing: content-box;
     width: 100px;
     border: 4px blue solid;
 }
-
 
 /* table */
 
@@ -150,13 +139,25 @@ caption {
   letter-spacing: 1px;
 }
 
+section {
+    box-sizing: border-box;
+    border: 1px solid black;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+article {
+    box-sizing: border-box;
+    border: 1px solid black;
+    flex: 600px;
+}
+
 /*
 selector {
     propaty: value;
     propaty: function(argument);
 }
 */
-
 
 span {
     color: red;
