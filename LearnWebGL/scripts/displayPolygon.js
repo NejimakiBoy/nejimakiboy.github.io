@@ -1,6 +1,6 @@
 "use strict";
-const webglUtils = await import(`webgl-utils.js`);
-const webglUtils = await import(`gl-matrix.js`);
+//const webglUtils = await import(`webgl-utils.js`);
+//const glMatrix = await import(`gl-matrix.js`);
 
 const vertexShaderSource = `
   attribute vec4 a_position;
