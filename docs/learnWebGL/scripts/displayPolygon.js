@@ -82,6 +82,8 @@ function main() {
   // バッファーに頂点を入れる
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
 
+  webglUtils.resizeCanvasToDisplaySize(gl.canvas);
+
   // webGL のビューポートを設定
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 
