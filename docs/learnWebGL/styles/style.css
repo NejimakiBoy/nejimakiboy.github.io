@@ -4,3 +4,7 @@ canvas {
   height: 270px;
   display: block;
 }
+
+a:hover {
+  text-decoration: none;
+}
