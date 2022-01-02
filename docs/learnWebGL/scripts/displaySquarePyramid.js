@@ -1,9 +1,8 @@
 "use strict";
-//const webglUtils = await import(`webgl-utils.js`);
-//const glMatrix = await import(`gl-matrix.js`);
 
 const vertexShaderSource = `
   attribute vec4 a_position;
+  attribute vec3 a_normal;
 
   void main() {
     gl_Position = a_position;
@@ -15,83 +14,6 @@ const fragmentShaderSource = `
     gl_FragColor = vec4(0.231, 0.670, 1, 1.0);
   }
   `;
-
-function persOBJ(text) {
-  const objPositions = [[0, 0, 0]];
-  const objNormals = [[0, 0, 0]];
-
-  const objVertexData = [
-    objPositions,
-    objNormals
-  ];
-
-  let webglVertexData = [
-    [],
-    []
-  ];
-
-  function newGeometry() {
-    if (geometry && geometry.data.position.length) {
-      geometry = undefined;
-    }
-    setGeometry();
-  }
-
-  function addVertex(vert) {
-    const ptn = vert.split('/');
-    ptn.forEach((objIndexStr, i) => {
-      if (!objIndexStr) {
-        return;
-      }
-      const objIndex = parseInt(objIndexStr);
-      const index = objIndex + (objIndex >= 0 ? 0 : objVertexData[i].length);
-      webglVertexData[i].push(...objVertexData[i][index]);
-    });
-  }
-
-  const keywords = {
-    v(parts) {
-      objPositions.push(parts.map(parseFloat));
-    },
-    vn(parts) {
-      objNormals.push(parts.map(parseFloat));
-    },
-    f(parts) {
-      const numTriangles = parts.length - 2;
-      for (let tri = 0; tri < numTriangles; ++tri) {
-        addVertex(parts[0]);
-        addVertex(parts[tri + 1]);
-        addVertex(parts[tri + 2]);
-      }
-    },
-  }
-
-  const keywordRE = /(\w*)(?: )*(.*)/;
-  const lines = text.split('\n');
-  for (let lineNo = 0; lineNo < lines.length; ++lineNo) {
-    const line = lines[lineNo].trim();
-    if (line === '' || line.startsWith('#')) {
-      continue;
-    }
-    const m = keywordRE.exec(line);
-    if (!m) {
-      continue;
-    }
-    const [, keyword, unparsedArgs] = m;
-    const parts = line.split(/\s+/).slice(1);
-    const handler = keywords[keyword];
-    if (!handler) {
-      console.warn('unhandled keyword:', keyword);  // eslint-disable-line no-console
-      continue;
-    }
-    handler(parts, unparsedArgs);
-  }
-
-  return {
-    position: webglVertexData[0],
-    normal: webglVertexData[1],
-  };
-}
 
 function createShader(gl, type, source) {
   // シェーダーを作る
@@ -152,13 +74,31 @@ function main() {
 
   // 頂点
   var positions = [
-    -0.3, -0.5,
-    0, 0.5,
-    0.3, -0.5,
+    //前面
+    -0.5, -0.5, 0.0,
+    0.5, -0.5, 0.0,
+    0.0, 0.5, -0.25,
+
+    //背面
+    -0.5, -0.5, -0.5,
+    0.5, -0.5, -0.5,
+    0.0, 0.5, -0.25,
+
+    //左側面
+    -0.5, -0.5, 0.0,
+    -0.5, -0.5, -0.5,
+    0.0, 0.5, -0.25,
+
+    //右側面
+    0.5, -0.5, 0.0,
+    0.5, -0.5, -0.5,
+    0.0, 0.5, -0.25,
   ];
 
   // バッファーに頂点を入れる
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+
+  webglUtils.resizeCanvasToDisplaySize(gl.canvas);
 
   // webGL のビューポートを設定
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
@@ -178,7 +118,7 @@ function main() {
   gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
 
   // バッファーからのデータのとり方を設定する
-  var size = 2;
+  var size = 3;
   var type = gl.FLOAT;
   var normalize = false;
   var stride = 0;
@@ -189,7 +129,7 @@ function main() {
   // 描画
   var primitiveType = gl.TRIANGLES;
   var offset = 0;
-  var count = 3;
+  var count = 12;
   gl.drawArrays(primitiveType, offset, count);
 }
 

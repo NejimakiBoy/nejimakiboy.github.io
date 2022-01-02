@@ -10,3 +10,8 @@ color: #3babff;
 a:hover {
   text-decoration: none;
 }
+
+footer {
+  box-sizing: border-box;
+  margin: 32px 16px;
+}
