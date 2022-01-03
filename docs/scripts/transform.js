@@ -150,19 +150,24 @@ function main() {
   // ユニフォームを置く場所を検索
   var matrixUniformLocation = gl.getUniformLocation(shaderProgram, "u_matrix");
 
+
+  /* 
+  NOTE: バッファーの作成はまとめてやってもいいが、
+  バッファーのバインドと情報の書き込みは属性ごとにやる。
+  まとめてバインドしてから書き込むことは出来ないっぽい
+  */
+
   // バッファーを作成
   var positionBuffer = gl.createBuffer();
-  var colorBuffer = gl.createBuffer();
-
-  // バッファーのバインドと情報の書き込みは属性ごとにやる
-  // まとめてバインドしてから書き込むことは出来ないっぽい
-  // バッファーの作成はまとめてやってもよい
 
   // バッファーをバインド
   gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
 
   // バッファーに頂点座標を入れる
   setGeometry(gl);
+
+  // バッファーを作成
+  var colorBuffer = gl.createBuffer();
 
   //バッファーをバインド
   gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
@@ -189,8 +194,10 @@ function main() {
   // 経過時間
   var then = 0;
 
+  // 移動方向
   var moveDir = 1;
 
+  // 拡縮方向
   var scaleDir = 1
 
   requestAnimationFrame(drawScene);
@@ -279,7 +286,7 @@ function main() {
     matrix = m4.scale(matrix, scale[0], scale[1], scale[2]);
     matrix = m4.multiply(matrix, movePivotMatrix);
 
-    // Set the matrix.
+    // 行列を渡す
     gl.uniformMatrix4fv(matrixUniformLocation, false, matrix);
 
     // 描画
