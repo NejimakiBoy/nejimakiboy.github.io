@@ -4,3 +4,7 @@ canvas {
   height: 270px;
   display: block;
 }
+
+#ui {
+  width: 200px;
+}
