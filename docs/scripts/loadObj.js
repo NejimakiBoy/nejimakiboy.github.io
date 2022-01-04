@@ -2,26 +2,19 @@
 
 const vertexShaderSource = `
   attribute vec4 a_position;
-  attribute vec4 a_color;
 
   uniform mat4 u_matrix;
 
-  varying vec4 v_color;
-
   void main() {
     gl_Position = u_matrix * a_position;
-
-    v_color = a_color;
   }
   `;
 
 const fragmentShaderSource = `
   precision mediump float;
 
-  varying vec4 v_color;
-
   void main() {
-    gl_FragColor = v_color;
+    gl_FragColor = vec4(0.231, 0.670, 1, 1.0);
   }
   `;
 
@@ -61,78 +54,33 @@ function createShaderProgram(gl, vs, fs) {
   gl.deleteProgram(program);
 }
 
-function setGeometry(gl) {
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
-    //前面
-    0, 0, 0,
-    25, 50, -25,
-    50, 0, 0,
+// NOTE: v だけのOBJしか読めない
+async function paeseObj(text, array) {
+  const lines = text.split(`\n`);
 
-    //背面
-    50, 0, -50,
-    25, 50, -25,
-    0, 0, -50,
+  for (let lineNo = 0; lineNo < lines.length; ++lineNo) {
+    const line = lines[lineNo].trim();
+    const parts = line.split(/\s+/).slice(1);
+    for (let i = 0; i < parts.length; ++i) {
+      array.push(parts[i]);
+    }
+  }
 
-    //左側面
-    0, 0, 0,
-    0, 0, -50,
-    25, 50, -25,
-
-    //右側面
-    50, 0, -50,
-    50, 0, 0.0,
-    25, 50, -25,
-
-    //底面
-    0, 0, 0,
-    50, 0, 0,
-    50, 0, -50,
-
-    0, 0, 0,
-    50, 0, -50,
-    0, 0, -50,
-
-  ]),
-    gl.STATIC_DRAW);
+  console.log ("array: " + array);
 }
 
-function setColor(gl) {
-  gl.bufferData(gl.ARRAY_BUFFER, new Uint8Array([
-    // 前面
-    255, 0, 0,
-    255, 0, 0,
-    255, 0, 0,
 
-    // 背面
-    0, 255, 0,
-    0, 255, 0,
-    0, 255, 0,
-
-    // 左側面
-    0, 0, 255,
-    0, 0, 255,
-    0, 0, 255,
-
-    // 右側面
-    255, 255, 0,
-    255, 255, 0,
-    255, 255, 0,
-
-    // 底面
-    255, 0, 255,
-    255, 0, 255,
-    255, 0, 255,
-    255, 0, 255,
-    255, 0, 255,
-    255, 0, 255,
-
-  ]), gl.STATIC_DRAW);
-
-}
-
-function main() {
+async function main() {
   const canvas = document.querySelector("#canvas");
   const gl = canvas.getContext("webgl");
+
+  const obj = await fetch(`../medias/teapotOnlyV.obj`);
+
+  var vertices = []
+
+  await paeseObj(await obj.text(), vertices);
+
+  console.log("vertices: " + vertices);
 
   // 頂点シェーダーを作る
   var vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
@@ -145,11 +93,9 @@ function main() {
 
   // 属性を置く場所を検索
   var positionAttributeLocation = gl.getAttribLocation(shaderProgram, "a_position");
-  var colorAttributeLocation = gl.getAttribLocation(shaderProgram, "a_color");
 
   // ユニフォームを置く場所を検索
   var matrixUniformLocation = gl.getUniformLocation(shaderProgram, "u_matrix");
-
 
   /* 
   NOTE: バッファーの作成はまとめてやってもいいが、
@@ -164,16 +110,7 @@ function main() {
   gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
 
   // バッファーに頂点座標を入れる
-  setGeometry(gl);
-
-  // バッファーを作成
-  var colorBuffer = gl.createBuffer();
-
-  //バッファーをバインド
-  gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
-
-  //バッファーに頂点色を入れる
-  setColor(gl);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
 
   function radToDeg(r) {
     return r * 180 / Math.PI;
@@ -186,19 +123,13 @@ function main() {
   // トランスフォームを設定
   var translation = [0, -0.2, 0];
   var rotation = [degToRad(-22.5), degToRad(45), degToRad(0)];
-  var scale = [0.01, 0.01, 0.01];
+  var scale = [0.2, 0.2, 0.2];
 
   // 回転する量を設定（rad / millisecond）
   var rotationSpeed = 0.001;
 
   // 経過時間
   var then = 0;
-
-  // 移動方向
-  var moveDir = 1;
-
-  // 拡縮方向
-  var scaleDir = 1
 
   requestAnimationFrame(drawScene);
 
@@ -210,24 +141,6 @@ function main() {
     then = now;
 
     rotation[1] += rotationSpeed * deltaTime;
-
-    translation[0] += 0.01 * moveDir;
-
-    if (translation[0] >= 0.8) {
-      moveDir = -1;
-    }
-    else if (translation[0] <= -0.8) {
-      moveDir = 1
-    }
-
-    scale[1] += 0.0001 * scaleDir;
-
-    if (scale[1] >= 0.015) {
-      scaleDir = -1;
-    }
-    else if (scale[1] <= 0.005) {
-      scaleDir = 1
-    }
 
     // キャンバス解像度と表示解像度を合わせる
     webglUtils.resizeCanvasToDisplaySize(gl.canvas);
@@ -263,17 +176,6 @@ function main() {
     var offset = 0;
     gl.vertexAttribPointer(positionAttributeLocation, size, type, normalize, stride, offset);
 
-    gl.enableVertexAttribArray(colorAttributeLocation);
-
-    gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
-
-    var size = 3;
-    var type = gl.UNSIGNED_BYTE;
-    var normalize = true;
-    var stride = 0;
-    var offset = 0;
-    gl.vertexAttribPointer(colorAttributeLocation, size, type, normalize, stride, offset);
-
     // 行列計算
     var matrix = m4.translation(translation[0], translation[1], translation[2]);
 
@@ -284,7 +186,7 @@ function main() {
     matrix = m4.yRotate(matrix, rotation[1]);
     matrix = m4.zRotate(matrix, rotation[2]);
     matrix = m4.scale(matrix, scale[0], scale[1], scale[2]);
-    matrix = m4.multiply(matrix, movePivotMatrix);
+    //matrix = m4.multiply(matrix, movePivotMatrix);
 
     // 行列を渡す
     gl.uniformMatrix4fv(matrixUniformLocation, false, matrix);
@@ -292,7 +194,7 @@ function main() {
     // 描画
     var primitiveType = gl.TRIANGLES;
     var offset = 0;
-    var count = 18;
+    var count = vertices.length/3;
     gl.drawArrays(primitiveType, offset, count);
 
     requestAnimationFrame(drawScene);
