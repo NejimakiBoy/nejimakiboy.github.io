@@ -17,3 +17,8 @@ footer {
   box-sizing: border-box;
   margin: 32px 16px;
 }
+
+.page-header a:link {
+  text-decoration: none;
+  color: #ffffff;
+}
