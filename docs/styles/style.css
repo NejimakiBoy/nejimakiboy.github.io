@@ -18,7 +18,7 @@ footer {
   margin: 32px 16px;
 }
 
-.page-header a:link {
+.page-header a:link, .page-header a:visited{
   text-decoration: none;
   color: #ffffff;
 }
