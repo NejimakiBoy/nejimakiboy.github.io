@@ -1,0 +1,1 @@
+document.write("<header><h1 class="page-header"><a href="index.html">nejimakiboy.github.io</a></h1></header>");
