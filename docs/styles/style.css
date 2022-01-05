@@ -18,7 +18,7 @@ footer {
   padding: 16px 0;
 }
 
-.page-header a:link, .page-header a:visited{
+header a:link, header a:visited{
   text-decoration: none;
   color: #ffffff;
 }
