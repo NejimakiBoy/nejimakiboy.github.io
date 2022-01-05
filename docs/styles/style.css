@@ -16,6 +16,7 @@ a:hover {
 footer {
   box-sizing: border-box;
   padding: 16px 0;
+  font-size: 0.9rem;
 }
 
 header a:link, header a:visited{
