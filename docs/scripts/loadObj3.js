@@ -61,7 +61,10 @@ function createShaderProgram(gl, vs, fs) {
   gl.deleteProgram(program);
 }
 
-async function paeseObj(text, vertexArray, v, f) {
+async function paeseObj(text, vertexArray) {
+  const v = [];
+  const f = [];
+
   const lines = text.split(`\n`);
 
   for (let lineNo = 0; lineNo < lines.length; ++lineNo) {
@@ -101,11 +104,9 @@ async function main() {
 
   const obj = await fetch(`../medias/teapot.obj`);
 
-  var vertices = []
-  var v = [];
-  var f = [];
+  var vertexArray = []
 
-  await paeseObj(await obj.text(), vertices, v, f);
+  await paeseObj(await obj.text(), vertexArray);
 
   // 頂点シェーダーを作る
   var vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
@@ -136,7 +137,7 @@ async function main() {
   gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
 
   // バッファーに頂点座標を入れる
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertexArray), gl.STATIC_DRAW);
 
   // バッファーを作成
   var colorBuffer = gl.createBuffer();
@@ -147,7 +148,7 @@ async function main() {
   //バッファーに頂点色を入れる
   const colArr = [];
 
-  for (let i = 0; i < vertices.length / 3; ++i) {
+  for (let i = 0; i < vertexArray.length / 3; ++i) {
     const col1 = Math.random();
     const col2 = Math.random();
     const col3 = Math.random();
@@ -252,7 +253,7 @@ async function main() {
     // 描画
     var primitiveType = gl.TRIANGLES;
     var offset = 0;
-    var count = vertices.length / 3;
+    var count = vertexArray.length / 3;
     gl.drawArrays(primitiveType, offset, count);
 
     requestAnimationFrame(drawScene);
