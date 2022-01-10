@@ -109,13 +109,13 @@ async function main() {
   await paeseObj(await obj.text(), vertexArray);
 
   // 頂点シェーダーを作る
-  var vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
+  var vertexShader = gl.createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
 
   // フラグメントシェーダーを作る
-  var fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
+  var fragmentShader = gl.createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
 
   // シェーダープログラムを作る
-  var shaderProgram = createShaderProgram(gl, vertexShader, fragmentShader);
+  var shaderProgram = gl.createShaderProgram(gl, vertexShader, fragmentShader);
 
   // 属性を置く場所を検索
   var positionAttributeLocation = gl.getAttribLocation(shaderProgram, "a_position");
