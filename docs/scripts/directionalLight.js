@@ -178,7 +178,7 @@ async function main() {
 
     rotation[1] += rotationSpeed  * deltaTime;
 
-    //cameraAngleRadians += rotationSpeed * deltaTime;
+    cameraAngleRadians += rotationSpeed * 0.05 * deltaTime;
 
     debugVar(translation);
     debugVar(targetPositon);
