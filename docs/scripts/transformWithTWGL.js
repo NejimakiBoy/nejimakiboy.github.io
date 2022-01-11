@@ -186,8 +186,6 @@ function main() {
     };
 
     twgl.setUniforms(programInfo, uniforms);
-
-    twgl.setBuffersAndAttributes(gl, programInfo, bufferInfo);
     twgl.drawBufferInfo(gl, bufferInfo);
 
     requestAnimationFrame(drawScene);
