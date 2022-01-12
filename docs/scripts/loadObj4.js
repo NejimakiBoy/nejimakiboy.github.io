@@ -93,6 +93,12 @@ async function paeseObj(text, vertexArray) {
   const v = [];
   const f = [];
 
+  var vertexArray = {
+    positons: [],
+    normals: [],
+    texcords: [],
+  }
+
   const lines = text.split(`\n`);
 
   for (let lineNo = 0; lineNo < lines.length; ++lineNo) {
