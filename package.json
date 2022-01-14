@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "dependencies": {
+    "p5": "^1.4.0",
+    "three": "^0.136.0",
+    "twgl.js": "^4.21.2"
+  }
+}
