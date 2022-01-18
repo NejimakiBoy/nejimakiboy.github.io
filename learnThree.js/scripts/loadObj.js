@@ -28,16 +28,17 @@ function init() {
 
   const object3D = new THREE.Object3D();
 
-  OBJLoader.load("../medias/happyBuddhaFixed.obj", function (object) {
-    object.traverse(function (child) {
-      child.material = material;
-      /*
-      var object3DChild = new THREE.Mesh(child.geometry, child.material);
-      object3D.add(object3DChild);
-      */
+  OBJLoader.load("../medias/happyBuddhaFixed.obj",
+    function (object) {
+      object.traverse(function (child) {
+          child.material = material;
+          /*
+          var object3DChild = new THREE.Mesh(child.geometry, child.material);
+          object3D.add(object3DChild);
+          */
+        });
+      object3D.add(object);
     })
-    object3D.add(object);
-  })
 
   scene.add(object3D);
 
