@@ -13,6 +13,8 @@
   <meta name="description" content="Nejimaki BoyがThree.jsを学ぶ。">
 
   <link rel="stylesheet" href="./styles/canvas.css">
+  <script src="../node_modules/three/build/three.min.js"></script>
+  <script src="../node_modules/three/examples/js/loaders/OBJLoader.js"></script>
   <script type="module" src="./scripts/loadObj.js"></script>
 </head>
 
@@ -25,6 +27,15 @@
 
       <canvas id="canvas"></canvas>
 
+      <p>Three.js本体とは別にOBJLoader.jsというスクリプトが用意されている、これを利用してOBJファイルを読み込んだ</p>
+      <p>OBJを読み込んで出てくるデータの型がわかっていなかったので混乱した
+        <a href="https://threejs.org/docs/#examples/en/loaders/OBJLoader">ドキュメント</a>
+        にはちゃんと書いてあるんだけど、英語が面倒くさいと思って適当に読み飛ばしてた。
+      </p>
+      <p>OBJLoadr.jsをimportで使う方法がわからないので &lt; script &gt; タグで普通に読み込んだ。
+        <a href="https://threejs.org/docs/index.html#manual/en/introduction/Installation">ドキュメント</a>
+        にある方法だと上手く行かないんだよね。
+      </p>
     </section>
   </article>
 

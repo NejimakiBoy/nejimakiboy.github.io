@@ -1,12 +1,8 @@
-// ページの読み込みを待つ
 window.addEventListener('load', init);
 
-import * as THREE from '../../../node_modules/three/build/three.js';
-import {OBJLoader} from '../../../node_modules/three/examples/jsm/loaders/OBJLoader.js';
-
 function init() {
-
   const canvas = document.querySelector('#canvas');
+  const OBJLoader = new THREE.OBJLoader();
 
   const width = canvas.clientWidth;
   const height = canvas.clientHeight;
@@ -23,29 +19,35 @@ function init() {
   var far = 2000;
   const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 
-  camera.position.set(0, 0, 10);
+  camera.position.set(0, 0, 25);
 
   const light = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
-  scene.add( light );
+  scene.add(light);
 
-  const material = new THREE.MeshStandardMaterial();
+  const material = new THREE.MeshNormalMaterial();
 
-  const OBJLoader = new OBJLoader();
+  const object3D = new THREE.Object3D();
 
-  OBJLoader.setMaterials(material);
-
-  OBJLoader.load("../medias/bunny.obj", function(object) {
-    object.traverse(function(child) {
+  OBJLoader.load("../medias/happyBuddhaFixed.obj", function (object) {
+    object.traverse(function (child) {
       child.material = material;
-      console.log(child.material);
+      /*
+      var object3DChild = new THREE.Mesh(child.geometry, child.material);
+      object3D.add(object3DChild);
+      */
     })
-    const mesh = object;
-    console.log(mesh);
-    scene.add(mesh);
+    object3D.add(object);
   })
+
+  scene.add(object3D);
+
+  object3D.scale.set(0.1, 0.1, 0.1);
+  object3D.position.set(0, -10, 0);
 
   function render(time) {
     time *= 0.001;
+
+    object3D.rotation.y = time;
 
     renderer.render(scene, camera);
 
