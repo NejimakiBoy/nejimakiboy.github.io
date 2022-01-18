@@ -19,7 +19,7 @@
   -- (Read: http://dynalon.github.io/mdwiki/#!quickstart.md#Adding_a_navigation)
   -->
 
-[nejimakiboy.github.io](../index.html)
+[nejimakiboy.vercel.app](../index.html)
 
 <!-- [忘備録ホーム](index.md) -->
 
