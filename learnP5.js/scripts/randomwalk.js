@@ -18,18 +18,18 @@ function setup() {
 }
 
 function mouseClicked() {
-  palNo += 1;
-  if (palNo > palette.length-1) {
-    palNo = 0;
-  }
-
-  headCol = palette[palNo];
+  
 
   if (isWalking == true) {
     isWalking = false;
   }
   else {
     isWalking = true;
+    palNo += 1;
+  if (palNo > palette.length-1) {
+    palNo = 0;
+  }
+  headCol = palette[palNo];
   }
 }
 
