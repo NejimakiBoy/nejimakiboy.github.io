@@ -3,7 +3,7 @@ const clearColor = '#3babff';
 
 var palette = [[255, 0, 0], [0, 255, 0], [0, 0, 255]];
 var palNo = 0;
-var headCol = palette[0];
+var headCol = palette[palNo];
 
 var footPrints = [];
 
@@ -45,7 +45,7 @@ function draw() {
     if (r > 128) {
       r = 128;
     }
-    else if (r > 16) {
+    else if (r > 32) {
       r = 32;
     }
 
