@@ -45,7 +45,7 @@ function draw() {
     if (r > 128) {
       r = 128;
     }
-    else if (r > 32) {
+    else if (r < 32) {
       r = 32;
     }
 
