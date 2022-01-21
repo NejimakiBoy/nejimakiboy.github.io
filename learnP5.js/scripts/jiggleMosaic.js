@@ -10,6 +10,7 @@ function setup() {
   canvas.parent('p5canvas');
   background(clr);
   image(img, 0, 0,);
+  frameRate(30);
 }
 
 function draw() {
