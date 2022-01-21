@@ -13,7 +13,7 @@ function setup() {
 }
 
 function draw() {
-  for (let i = 0; i < 64; ++i) {
+  for (let i = 0; i < 256; ++i) {
     let x = random(0, 512);
     let y = random(0, 512);
     let col = img.get(x, y);
