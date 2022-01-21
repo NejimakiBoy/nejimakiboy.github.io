@@ -10,7 +10,7 @@ function setup() {
   canvas.parent('p5canvas');
   background(clr);
   image(img, 0, 0,);
-  frameRate(30);
+  frameRate();
 }
 
 function draw() {
@@ -20,6 +20,6 @@ function draw() {
     let col = img.get(x, y);
     noStroke();
     fill(col);
-    ellipse(x + random(-8, 8), y + random(-16, 16), random(4, 8));
+    ellipse(x + random(-16, 16), y + random(-16, 16), random(4, 8));
   }
 }
